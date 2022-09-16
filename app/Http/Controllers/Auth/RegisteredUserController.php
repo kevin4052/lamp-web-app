@@ -39,6 +39,7 @@ class RegisteredUserController extends Controller
             'dob' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'rating' => ['string'],
         ]);
 
         $user = User::create([

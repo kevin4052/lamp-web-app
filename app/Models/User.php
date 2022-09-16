@@ -23,6 +23,7 @@ class User extends Authenticatable
         'dob',
         'email',
         'password',
+        'rating'
     ];
 
     /**

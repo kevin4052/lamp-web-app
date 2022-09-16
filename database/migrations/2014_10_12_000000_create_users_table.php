@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->date('dob');
             $table->timestamp('email_verified_at')->nullable();
+            $table->date('dob');
+            $table->enum('rating', ['1', '2', '3', '4', '5'])->nullable();
+            $table->integer('role_id')->unsigned();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
