@@ -44,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'dob' => 'datetime: m/d/y',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

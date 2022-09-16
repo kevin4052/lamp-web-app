@@ -1,3 +1,7 @@
+form {
+    margin-top: 5rem;
+}
+
 .navbar {
     padding-left: 20px;
     padding-right: 20px;
@@ -7,8 +11,14 @@
     height: calc(100vh - 110px);
 }
 
-form {
-    margin-top: 5rem;
+.cover-container {
+    max-width: 42em;
+}
+
+.nav-item {
+    form {
+        margin: 0;
+    }
 }
 
 .form-signin {

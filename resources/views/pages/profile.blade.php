@@ -19,11 +19,11 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                         <label class="labels">First Name</label>
                         <input type="text" class="form-control" placeholder="first name" value="">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                         <label class="labels">Last Name</label>
                         <input type="text" class="form-control" value="" placeholder="last Name">
                     </div>
@@ -33,7 +33,7 @@
                         <label class="labels">Email</label>
                         <input type="email" class="form-control" placeholder="name@example.com" value="">
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-3">
                         <label class="labels">Date of Birth</label>
                         <input type="date" class="form-control" placeholder="enter phone number" value="">
                     </div>
