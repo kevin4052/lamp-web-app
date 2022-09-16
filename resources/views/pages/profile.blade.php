@@ -19,12 +19,24 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="last Name"></div>
+                    <div class="col-md-6">
+                        <label class="labels">First Name</label>
+                        <input type="text" class="form-control" placeholder="first name" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Last Name</label>
+                        <input type="text" class="form-control" value="" placeholder="last Name">
+                    </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="name@example.com" value=""></div>
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                    <div class="col-md-12">
+                        <label class="labels">Email</label>
+                        <input type="email" class="form-control" placeholder="name@example.com" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">Date of Birth</label>
+                        <input type="date" class="form-control" placeholder="enter phone number" value="">
+                    </div>
                 </div>
                 <div class="mt-5 text-center">
                     <button class="btn btn-primary profile-button" type="button">Save Profile</button>

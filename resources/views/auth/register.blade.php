@@ -1,4 +1,4 @@
-@extends('layouts.landing')
+@extends('layouts.main')
 @section('page-title', 'signup')
 
 @section('content')
@@ -35,6 +35,16 @@
                     {{$message}}
                 </div>
             @enderror
+        </div>
+
+        <div class="form-floating">
+            <input id="datepicker" type="date" class="form-control" name="dob" id="floatingInput" placeholder="d/m/y" required autofocus>
+            <label for="datepicker">Date of Birth</label>
+            @error('datepicker')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+              @enderror
         </div>
 
         <div class="form-floating">
