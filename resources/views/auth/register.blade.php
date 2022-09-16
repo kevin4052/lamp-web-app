@@ -14,9 +14,16 @@
 
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="firstname" :value="__('First name')" />
 
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-text-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus />
+            </div>
+
+            <!-- Name -->
+            <div class="mt-4">
+                <x-input-label for="lastname" :value="__('Last name')" />
+
+                <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus />
             </div>
 
             <!-- Email Address -->
