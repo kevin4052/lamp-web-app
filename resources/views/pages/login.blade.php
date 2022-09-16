@@ -17,6 +17,7 @@
         </div>
     
         <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-      </form>
+    </form>
+    <p>Don't have an account? <a href="/">Signup</a></p>
 </div>
 @endsection
