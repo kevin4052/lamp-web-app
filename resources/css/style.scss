@@ -2,3 +2,17 @@
     background-color: black;
     color: white;
 }
+
+form {
+    margin-top: 5rem;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+
+    .form-floating {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}

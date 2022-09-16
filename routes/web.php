@@ -14,20 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $user = 'Kevin';
-    $age = 37;
-    return view('pages/home', [
-        "user" => $user,
-        "age" => $age
-    ]);
-});
-
-Route::get('/signup', function () {
-    return view('welcome');
+    return view('pages/signup');
 });
 
 Route::get('/login', function () {
-    return view('welcome');
+    return view('pages/login');
 });
 
 // protected routes
