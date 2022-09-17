@@ -21,10 +21,10 @@
                   <ul class="navbar-nav mr-auto d-flex align-items-end">
                         @auth
                             <li class="nav-item">
-                                <a href="{{ url('/profile') }}" class="nav-link">{{ Auth::user()->lastname }}, {{ Auth::user()->firstname }}</a>
+                                <a href="{{ route('auth.profile') }}" class="nav-link">{{ Auth::user()->lastname }}, {{ Auth::user()->firstname }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                                <a href="{{ route('auth.dashboard') }}" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <form method="POST" action="{{ route('logout') }}">

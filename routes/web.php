@@ -17,14 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group([
+    'middleware' => 'auth',
+    'as' => 'auth.'
+], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/profile', function () {
-    return view('pages/profile');
-})->middleware(['auth'])->name('profile');
+    Route::get('/profile', function () {
+        return view('pages/profile');
+    })->name('profile');
+    
+    Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('profile.edit');
+    
+    Route::get('/photos/create', [\App\Http\Controllers\PhotoController::class, 'create'])->name('photos.create');
+    
+    Route::put('/photos', [\App\Http\Controllers\PhotoController::class, 'store'])->name('photos.store');
+});
 
-Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('edit_profile');
 
 require __DIR__.'/auth.php';
