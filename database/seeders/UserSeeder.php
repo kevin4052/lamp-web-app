@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'firstname' => 'Admin',
             'lastname' => 'Admin',
-            'email' => "admin@gmail.com",
+            'email' => "admin@example.com",
             'password' => Hash::make('admin123'),
             'dob' => Carbon::create('1985', '09', '13'),
             'role_id' => 1,

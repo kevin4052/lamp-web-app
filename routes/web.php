@@ -25,4 +25,6 @@ Route::get('/profile', function () {
     return view('pages/profile');
 })->middleware(['auth'])->name('profile');
 
+Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('edit_profile');
+
 require __DIR__.'/auth.php';
