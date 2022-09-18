@@ -25,9 +25,10 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view("/photos/create");
+        $user = User::where('id', $id)->first();
+        return view("/photos/create", ['user' => $user]);
     }
 
     /**
@@ -36,28 +37,30 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        // dd($request);
-
         $request->validate([
             'image' => 'required|image',
         ]);
-        
-        $newName = time() . '-' . $request->file('image')->getClientOriginalName();
-        $size = $request->file('image')->getSize();
-        $name = $newName;
-        $request->file('image')->move(public_path('img'), $name);
 
-        $photo = new Photo();
-        $photo->name = $name;
-        $photo->size = $size;
-        $photo->user_id = auth()->user()->id;
-        $photo->save();
+        $user = User::where('id', $id)->first();        
+        $savedImage = $request->file('image')->storeOnCloudinary('lampWebApp');
 
-        $user = User::where('id', auth()->user()->id)->first();
-        $user->photo_id = $photo->id;
-        $user->save();
+        if ($user->photo_id) {
+            $photo = Photo::where('id', $user->photo_id)->first();
+            $photo->url = $savedImage->getPath();
+            $photo->size = $savedImage->getSize();
+            $photo->save();
+
+        } else {
+            $newPhoto = new Photo();
+            $newPhoto->url = $savedImage->getPath();
+            $newPhoto->size = $request->file('image')->getSize();
+            $newPhoto->save();
+
+            $user->photo_id = $newPhoto->id;
+            $user->save();
+        }
 
         return redirect("/profile/{$user->id}")->with('success', 'Profile image successfully saved');
     }

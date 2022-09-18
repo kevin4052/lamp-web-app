@@ -5,7 +5,7 @@
     <div class="rounded bg-white mt-5 mb-5">
         <h1>Upload Photo</h1>
         <div class="mt-30">
-            <form method="POST" enctype="multipart/form-data" action="{{ route('auth.photos.store') }}">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('auth.photos.store', ['id' => $user->id]) }}">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
