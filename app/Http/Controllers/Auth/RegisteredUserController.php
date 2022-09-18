@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -48,6 +49,7 @@ class RegisteredUserController extends Controller
             'dob' => $request->dob,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => DB::table('roles')->select('name')->where('name', '=', 'Subscriber'),
         ]);
 
         event(new Registered($user));

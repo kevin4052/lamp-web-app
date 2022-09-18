@@ -18,6 +18,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // $adminId = strval(DB::table('roles')->select('id')->where('name', '=', 'Administrator'));        
+        
         DB::table('users')->insert([
             'firstname' => 'Admin',
             'lastname' => 'Admin',
@@ -29,6 +31,6 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
 
-        User::factory()->count(50)->create();
+        User::factory()->count(37)->create();
     }
 }
