@@ -5,7 +5,7 @@
 <div class="form-signin w-100 m-auto text-center">
     <form method="POST" action="{{ route('register') }}">
         @csrf
-        <h1 class="h3 mb-3 fw-normal">Signup</h1>
+        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
 
         <div class="form-floating">
             <input id="firstname" type="text" class="form-control" name="firstname" placeholder="John" value="{{old('firstname')}}" required autofocus>
@@ -19,7 +19,7 @@
 
         <div class="form-floating">
             <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Doe" value="{{old('lastname')}}" required autofocus>
-            <label for="lastname">Last Names</label>
+            <label for="lastname">Last Name</label>
             @error('lastname')
             <div class="alert alert-danger" role="alert">
                     {{$message}}
@@ -29,7 +29,7 @@
     
         <div class="form-floating">
             <input id="email" type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="{{old('email')}}" required autofocus>
-            <label for="email">Email address</label>
+            <label for="email">Email Address</label>
             @error('email')
                 <div class="alert alert-danger" role="alert">
                     {{$message}}
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-floating">
-            <input id="datepicker" type="date" class="form-control" name="dob" id="floatingInput" placeholder="d/m/y" required autofocus>
+            <input id="datepicker" type="date" class="form-control" max="{{(new \DateTime())->format('Y-m-d')}}" name="dob" id="floatingInput" value="{{old('dob')}}" required autofocus>
             <label for="datepicker">Date of Birth</label>
             @error('datepicker')
                 <div class="alert alert-danger" role="alert">
@@ -67,5 +67,6 @@
     </form>
     <p>Already have an account? <a href="/login">Login</a></p>
 </div>
+
 @endsection
 

@@ -36,11 +36,11 @@
                             </li>
                         @else
                             <li class="nav-item active">
-                                <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                                <a href="{{ route('login') }}" class="nav-link">Login</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a href="{{ route('register') }}" class="nav-link">Signup</a>
+                                    <a href="{{ route('register') }}" class="nav-link">Sign Up</a>
                                 </li>
                             @endif
                         @endauth

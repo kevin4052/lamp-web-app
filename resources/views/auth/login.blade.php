@@ -9,7 +9,7 @@
         <h1 class="h3 mb-3 fw-normal">Login</h1>    
         <div class="form-floating">
           <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="{{old('email')}}">
-          <label for="email">Email address</label>
+          <label for="email">Email Address</label>
         </div>
         <div class="form-floating">
           <input type="password" name="password" class="form-control" id="password" placeholder="Password" required autocomplete="current-password">
