@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
             'dob' => $request->dob,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => DB::table('roles')->select('name')->where('name', '=', 'Subscriber'),
+            'role_id' => 2,
         ]);
 
         event(new Registered($user));

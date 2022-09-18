@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Database\Factories\DB;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -19,8 +19,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        // DB::table('roles')->select('id')->where('name', '=', 'Subscriber');
-
         return [
             'firstname' => fake()->firstname(),
             'lastname' => fake()->lastname(),

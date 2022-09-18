@@ -17,9 +17,7 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        // $adminId = strval(DB::table('roles')->select('id')->where('name', '=', 'Administrator'));        
-        
+    {   
         DB::table('users')->insert([
             'firstname' => 'Admin',
             'lastname' => 'Admin',
