@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -27,5 +28,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
+
+        User::factory()->count(50)->create();
     }
 }

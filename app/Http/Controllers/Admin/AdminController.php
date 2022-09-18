@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Photo;
 use App\Models\User;
-use App\Helper\Helper;
+use Illuminate\Support\Facades\DB;
 
-class PhotoController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,20 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $userRole = $user->role->name;
+        if ($userRole != 'Administrator') {
+            return redirect("/profile/{$user->id}");
+        }
+
+        $users = DB::table('users')
+            ->join('roles', 'users.role_id', '=', 'roles.id')
+            ->select('users.id', 'firstname', 'lastname', 'email', 'dob', 'rating', 'role_id', 'photo_id', 'roles.name as role')
+            ->where('roles.name', '<>', 'Administrator')
+            ->paginate(10);
+
+        // return $users;
+        return view('dashboard', ["users" => $users]);
     }
 
     /**
@@ -27,7 +39,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        return view("/photos/create");
+        //
     }
 
     /**
@@ -38,28 +50,7 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
-        $request->validate([
-            'image' => 'required|image',
-        ]);
-        
-        $newName = time() . '-' . $request->file('image')->getClientOriginalName();
-        $size = $request->file('image')->getSize();
-        $name = $newName;
-        $request->file('image')->move(public_path('img'), $name);
-
-        $photo = new Photo();
-        $photo->name = $name;
-        $photo->size = $size;
-        $photo->user_id = auth()->user()->id;
-        $photo->save();
-
-        $user = User::where('id', auth()->user()->id)->first();
-        $user->photo_id = $photo->id;
-        $user->save();
-
-        return redirect("/profile/{$user->id}")->with('success', 'Profile image successfully saved');
+        //
     }
 
     /**

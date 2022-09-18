@@ -21,11 +21,13 @@
                   <ul class="navbar-nav mr-auto d-flex align-items-end">
                         @auth
                             <li class="nav-item">
-                                <a href="{{ route('auth.profile') }}" class="nav-link">{{ Auth::user()->lastname }}, {{ Auth::user()->firstname }}</a>
+                                <a href="{{ route('auth.profile', ['id' => Auth::user()->id]) }}" class="nav-link">{{ Auth::user()->lastname }}, {{ Auth::user()->firstname }}</a>
                             </li>
+                            @if (Auth::user()->role->name == 'Administrator')
                             <li class="nav-item">
                                 <a href="{{ route('auth.dashboard') }}" class="nav-link">Dashboard</a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

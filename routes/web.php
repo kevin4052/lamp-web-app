@@ -13,27 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
 
 Route::group([
     'middleware' => 'auth',
     'as' => 'auth.'
-], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/profile', function () {
-        return view('pages/profile');
-    })->name('profile');
+], function () {    
+    Route::get('/profile/{id}', [\App\Http\Controllers\User\UserController::class, 'index'])->name('profile');
     
     Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('profile.edit');
     
     Route::get('/photos/create', [\App\Http\Controllers\PhotoController::class, 'create'])->name('photos.create');
     
     Route::put('/photos', [\App\Http\Controllers\PhotoController::class, 'store'])->name('photos.store');
+    
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('dashboard');
 });
 
 

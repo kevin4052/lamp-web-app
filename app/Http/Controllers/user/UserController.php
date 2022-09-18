@@ -10,6 +10,16 @@ use App\Models\User;
 class UserController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id)
+    {
+        return view('pages/profile');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -32,6 +42,6 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->save();        
 
-        return redirect("/profile")->with('success', ' User Updated Successfully');
+        return redirect("/profile/{$user->id}")->with('success', ' User Updated Successfully');
     }
 }
