@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index($id)
     {
-        return view('pages/profile');
+        $user = User::where('id', $id)->first();
+        return view('pages/profile', ['user' => $user]);
     }
 
     /**
@@ -31,7 +32,8 @@ class UserController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'dob' => ['required', 'date'],
-            'email' => 'unique:users,email,'.$request->query('id')
+            'email' => 'unique:users,email,'.$request->query('id'),
+            'rating' => 'string'
         ]);
         
         
@@ -40,6 +42,7 @@ class UserController extends Controller
         $user->lastname = $request->get('lastname');
         $user->dob = $request->get('dob');
         $user->email = $request->get('email');
+        $user->rating = $request->get('rating');
         $user->save();        
 
         return redirect("/profile/{$user->id}")->with('success', ' User Updated Successfully');
