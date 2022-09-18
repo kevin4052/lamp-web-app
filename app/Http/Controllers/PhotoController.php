@@ -39,27 +39,28 @@ class PhotoController extends Controller
      */
     public function store(Request $request, $id)
     {
-        // dd($request);
-
         $request->validate([
             'image' => 'required|image',
         ]);
 
-        //find user first
-        //check if user has photo_id
-        //if yes, then update url of photo record
-        //else create new recorde and update user relationship
-
+        $user = User::where('id', $id)->first();        
         $savedImage = $request->file('image')->storeOnCloudinary('lampWebApp');
 
-        $photo = new Photo();
-        $photo->name = $savedImage->getPath();
-        $photo->size = $request->file('image')->getSize();
-        $photo->save();
+        if ($user->photo_id) {
+            $photo = Photo::where('id', $user->photo_id)->first();
+            $photo->url = $savedImage->getPath();
+            $photo->size = $savedImage->getSize();
+            $photo->save();
 
-        $user = User::where('id', $id)->first();
-        $user->photo_id = $photo->id;
-        $user->save();
+        } else {
+            $newPhoto = new Photo();
+            $newPhoto->url = $savedImage->getPath();
+            $newPhoto->size = $request->file('image')->getSize();
+            $newPhoto->save();
+
+            $user->photo_id = $newPhoto->id;
+            $user->save();
+        }
 
         return redirect("/profile/{$user->id}")->with('success', 'Profile image successfully saved');
     }

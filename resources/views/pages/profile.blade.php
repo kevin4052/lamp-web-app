@@ -21,7 +21,7 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <a href="{{ route('auth.photos.create', ['id' => $user->id]) }}" class="rounded-circle mt-5">
                     @if ($user->photo_id)
-                    <img class="profile-img rounded-circle" src="{{ $user->photo->name }}">
+                    <img class="profile-img rounded-circle" src="{{ $user->photo->url }}">
                     @else
                     <img class="profile-img rounded-circle" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                     @endif
