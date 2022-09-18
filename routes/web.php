@@ -23,12 +23,11 @@ Route::group([
     
     Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('profile.edit');
     
-    Route::get('/photos/create', [\App\Http\Controllers\PhotoController::class, 'create'])->name('photos.create');
+    Route::get('/photos/create/{id}', [\App\Http\Controllers\PhotoController::class, 'create'])->name('photos.create');
     
-    Route::put('/photos', [\App\Http\Controllers\PhotoController::class, 'store'])->name('photos.store');
+    Route::put('/photos/{id}', [\App\Http\Controllers\PhotoController::class, 'store'])->name('photos.store');
     
     Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('dashboard');
 });
-
 
 require __DIR__.'/auth.php';
