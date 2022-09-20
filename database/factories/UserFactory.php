@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'lastname' => fake()->lastname(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$Pgb3vMVD0.1v9FQmZCeR0ueoXNRCM1.pVcj6oAT.H.pwK/QH4QCEC', // password
             'dob' => Carbon::create('1985', '09', '13'),
             'role_id' => 2,
             'remember_token' => Str::random(10),

@@ -19,9 +19,9 @@ Route::group([
     'middleware' => 'auth',
     'as' => 'auth.'
 ], function () {    
-    Route::get('/profile/{id}', [\App\Http\Controllers\User\UserController::class, 'index'])->name('profile');
+    Route::get('/profile/{id}', [\App\Http\Controllers\user\UserController::class, 'index'])->name('profile');
     
-    Route::put('/profile/edit', [\App\Http\Controllers\User\UserController::class, 'update'])->name('profile.edit');
+    Route::put('/profile/edit', [\App\Http\Controllers\user\UserController::class, 'update'])->name('profile.edit');
     
     Route::get('/photos/create/{id}', [\App\Http\Controllers\PhotoController::class, 'create'])->name('photos.create');
     
